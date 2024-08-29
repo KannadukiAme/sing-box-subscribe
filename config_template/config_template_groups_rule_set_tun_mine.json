@@ -101,20 +101,41 @@
       ]
     },
     {
-      "tag": "Steam",
-      "type": "selector",
-      "outbounds": [
-        "auto",
-        "direct",
-        "{all}"
-      ]
-    },
-    {
       "tag": "AdBlock",
       "type": "selector",
       "outbounds": [
         "block",
         "direct"
+      ]
+    },
+    {
+      "tag": "Taiwan",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Japan",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇯🇵|JP|jp|日本|日|Japan"
+          ]
+        }
       ]
     },
     {
@@ -166,12 +187,26 @@
         "outbound": "dns-out"
       },
       {
-        "rule_set": "geosite-steam",
-        "outbound": "Steam"
-      },
-      {
         "rule_set": "geosite-category-ads-all",
         "outbound": "AdBlock"
+      },
+      {
+        "domain": [
+          "steamserver.net"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-steam@cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-dmm",
+        "outbound": "Japan"
+      },
+      {
+        "rule_set": "geosite-bahamut",
+        "outbound": "Taiwan"
       },
       {
         "clash_mode": "direct",
@@ -232,10 +267,24 @@
         "download_detour": "direct"
       },
       {
-        "tag": "geosite-steam",
+        "tag": "geosite-steam@cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/steam.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/steam@cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-dmm",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/dmm.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bahamut",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bahamut.srs",
         "download_detour": "direct"
       }
     ]
